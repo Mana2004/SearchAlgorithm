@@ -5,7 +5,8 @@ def main():
     algorithm = Algorithm(file_path)
 
     target_username = input("enter the username to search for: ")
-    line_number = algorithm.linear_search(target_username)
+    #line_number = algorithm.linear_search(target_username)
+    line_number = algorithm.binary_search(target_username)
 
     if line_number != -1:
         print(f"Username '{target_username}' found at line {line_number}.")
