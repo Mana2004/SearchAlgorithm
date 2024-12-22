@@ -9,7 +9,7 @@ class Algorithm:
         with open(self.file_path, 'r') as file:
             usernames = [line.strip() for line in file]
         return usernames
-    
+
 
     
     def linear_search(self, target_username):
@@ -17,9 +17,8 @@ class Algorithm:
         usernames = self.read_file()
         line_number = 0  
         for line in usernames:
-            line_number += 1 
-            username = line.strip()  
-            if username == target_username:
+            line_number += 1   
+            if line == target_username:
                 return line_number, f"{time.time() - start_time:.4f} seconds"
         return -1
 
@@ -60,4 +59,25 @@ class Algorithm:
         else:
             return -1
         
-    
+
+
+    def bloom_filter_search(self, target_username):
+        start_time = time.time()
+        usernames = self.read_file
+        bloom_size = 1000
+        hash_function = 3
+        bloom_filter = [False] * bloom_size
+        for username in usernames:
+            for i in range(hash_function):
+                index = int(hashlib.sha256(f'{username}{i}'.encode()).hexdigest(), 16) % bloom_size
+                bloom_filter[index] = True
+        for i in range(hash_function):
+            index = int(hashlib.sha256(f'{target_username}{i}'.encode()).hexdigest(), 16) % bloom_size
+            if not bloom_filter[index]:
+                return -1
+        line_number = 0
+        for line in usernames:
+            line_number += 1
+            if line == target_username:
+                return line_number, f"{time.time() - start_time:.4f} seconds"
+        return -1
