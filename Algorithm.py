@@ -63,7 +63,7 @@ class Algorithm:
 
     def bloom_filter_search(self, target_username):
         start_time = time.time()
-        usernames = self.read_file
+        usernames = self.read_file()
         bloom_size = 1000
         hash_function = 3
         bloom_filter = [False] * bloom_size
