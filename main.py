@@ -1,7 +1,7 @@
 from Algorithm import Algorithm
 
 def main():
-    file_path = 'D:/meow/programm/search_al/usernames.txt'
+    file_path = 'D:/meow/programm/search_al/larger_data.txt'
     algorithm = Algorithm(file_path)
 
     #sorted_file_path = 'D:/meow/programm/search_al/sorted_usernames.txt'

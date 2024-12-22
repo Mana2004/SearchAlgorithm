@@ -11,7 +11,7 @@ class Algorithm:
         return usernames
 
 
-    
+
     def linear_search(self, target_username):
         start_time = time.time()
         usernames = self.read_file()
@@ -20,7 +20,7 @@ class Algorithm:
             line_number += 1   
             if line == target_username:
                 return line_number, f"{time.time() - start_time:.4f} seconds"
-        return -1
+        return -1, f"{time.time() - start_time:.4f} seconds"
 
 
 
@@ -34,31 +34,27 @@ class Algorithm:
             mid = (low + high) // 2
             mid_username = sorted_usernames[mid]
             if mid_username.casefold() == target_username.casefold():
-                return mid + 1 ,f"{time.time() - start_time:.4f} seconds"
+                return mid + 1, f"{time.time() - start_time:.4f} seconds"
             elif mid_username.casefold() < target_username.casefold():
                 low = mid + 1
             else:
                 high = mid - 1
-        return -1
-    
+        return -1, f"{time.time() - start_time:.4f} seconds"
 
-    #hash_tabel
+
+
+    #Hash Table
     def optimized_search(self, target_username):
         start_time = time.time()
         usernames = self.read_file()
-        hash_tabel = {}
-        line_number = 0
-        for line in usernames:
-            line_number += 1
+        hash_table = {}
+        for line_number, line in enumerate(usernames, 1):
             username_hash = hashlib.sha256(line.encode()).hexdigest()
-            hash_tabel[username_hash] = line_number
+            hash_table[username_hash] = line_number
         username_hash = hashlib.sha256(target_username.encode()).hexdigest()
-        result = hash_tabel[username_hash]
-        if result:
-            return result, f"{time.time() - start_time:.4f} seconds"
-        else:
-            return -1
-        
+        result = hash_table.get(username_hash, -1)  # Safe lookup
+        return result, f"{time.time() - start_time:.4f} seconds"
+
 
 
     def bloom_filter_search(self, target_username):
@@ -74,10 +70,10 @@ class Algorithm:
         for i in range(hash_function):
             index = int(hashlib.sha256(f'{target_username}{i}'.encode()).hexdigest(), 16) % bloom_size
             if not bloom_filter[index]:
-                return -1
+                return -1, f"{time.time() - start_time:.4f} seconds"
         line_number = 0
         for line in usernames:
             line_number += 1
             if line == target_username:
                 return line_number, f"{time.time() - start_time:.4f} seconds"
-        return -1
+        return -1, f"{time.time() - start_time:.4f} seconds"
