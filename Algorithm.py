@@ -13,8 +13,8 @@ class Algorithm:
 
 
     def linear_search(self, target_username):
-        start_time = time.time()
         usernames = self.read_file()
+        start_time = time.time()
         line_number = 0  
         for line in usernames:
             line_number += 1   
@@ -25,9 +25,9 @@ class Algorithm:
 
 
     def binary_search(self, target_username):
-        start_time = time.time()
         usernames = self.read_file()
         sorted_usernames = sorted(usernames, key=lambda s: s.casefold())
+        start_time = time.time()
         low = 0
         high = len(sorted_usernames) - 1
         while low <= high:
@@ -45,12 +45,12 @@ class Algorithm:
 
     #Hash Table
     def optimized_search(self, target_username):
-        start_time = time.time()
         usernames = self.read_file()
         hash_table = {}
         for line_number, line in enumerate(usernames, 1):
             username_hash = hashlib.sha256(line.encode()).hexdigest()
             hash_table[username_hash] = line_number
+        start_time = time.time()
         username_hash = hashlib.sha256(target_username.encode()).hexdigest()
         result = hash_table.get(username_hash, -1)  # Safe lookup
         return result, f"{time.time() - start_time:.4f} seconds"
@@ -58,7 +58,6 @@ class Algorithm:
 
 
     def bloom_filter_search(self, target_username):
-        start_time = time.time()
         usernames = self.read_file()
         bloom_size = 1000
         hash_function = 3
@@ -67,6 +66,7 @@ class Algorithm:
             for i in range(hash_function):
                 index = int(hashlib.sha256(f'{username}{i}'.encode()).hexdigest(), 16) % bloom_size
                 bloom_filter[index] = True
+        start_time = time.time()
         for i in range(hash_function):
             index = int(hashlib.sha256(f'{target_username}{i}'.encode()).hexdigest(), 16) % bloom_size
             if not bloom_filter[index]:

@@ -1,7 +1,7 @@
 from Algorithm import Algorithm
 
 def main():
-    file_path = 'D:/meow/programm/search_al/larger_data.txt'
+    file_path = 'D:/meow/programm/search_al/firstnames.txt'
     algorithm = Algorithm(file_path)
 
     #sorted_file_path = 'D:/meow/programm/search_al/sorted_usernames.txt'
@@ -17,25 +17,25 @@ def main():
 
 
     if line_number1 != -1:
-        print(f"Username '{target_username}' found at line {line_number1}.")
+        print(f"Username '{target_username}' linear search {line_number1}.")
     else:
         print(f"Username '{target_username}' not found.")
 
 
     if line_number2 != -1:
-        print(f"Username '{target_username}' found at line {line_number2}.")
+        print(f"Username '{target_username}' binary search {line_number2}.")
     else:
         print(f"Username '{target_username}' not found.")
 
 
     if line_number3 != -1:
-        print(f"Username '{target_username}' found at line {line_number3}.")
+        print(f"Username '{target_username}' optimized search {line_number3}.")
     else:
         print(f"Username '{target_username}' not found.")
     
 
     if line_number4 != -1:
-        print(f"Username '{target_username}' found at line {line_number4}.")
+        print(f"Username '{target_username}' bloom filter {line_number4}.")
     else:
         print(f"Username '{target_username}' not found.")
 
