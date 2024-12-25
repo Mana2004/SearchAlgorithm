@@ -5,8 +5,8 @@ class Bloom_Filter:
     #intializing the requirements
     def __init__(self, file_path):
         self.file_path = file_path
-        self.array_size = 1000  
-        self.hash_function_count = 5  
+        self.array_size = 5500000  
+        self.hash_function_count = 9  
         self.array = [False] * self.array_size
         self.usernames = {}
         self.build_bloom_filter()
