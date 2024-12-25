@@ -36,10 +36,7 @@ def main():
         print(f"Username '{target_username}' not found.")
     
 
-    if line_number4 != -1:
-        print(f"Username '{target_username}' bloom filter search {line_number4}.")
-    else:
-        print(f"Username '{target_username}' not found.")
+    print(f"Username '{target_username}' bloom filter search {line_number4}.")
 
 
 if __name__ == "__main__":

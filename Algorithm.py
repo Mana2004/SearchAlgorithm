@@ -2,16 +2,18 @@ import hashlib
 import time
 
 class Algorithm:
+    #intializing the requirements
     def __init__(self, file_path):  
         self.file_path = file_path
 
+    #reads usernames.txt file
     def read_file(self):
         with open(self.file_path, 'r') as file:
             usernames = [line.strip() for line in file]
         return usernames
 
 
-
+    #linear search checks every line to see if it's the wanted username
     def linear_search(self, target_username):
         usernames = self.read_file()
 
@@ -26,7 +28,8 @@ class Algorithm:
         return -1, f"{time.time() - start_time:.6f} seconds"
 
 
-
+    #binary search sorts the usernames in a case insensetive manner
+    #then breaks the list in half then checks those halfs
     def binary_search(self, target_username):
         usernames = self.read_file()
 
@@ -48,7 +51,8 @@ class Algorithm:
         return -1, f"{time.perf_counter() - start_time:.6f} seconds"
 
 
-
+    #creats a hash dictionary using usernames also stores line numbers
+    #it gets the target username's hash from the table if it couldn't find it the -1
     def hash_table_search(self, target_username):
         usernames = self.read_file()
 
