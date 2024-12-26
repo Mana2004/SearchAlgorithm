@@ -66,7 +66,9 @@ The algorithm returns the line number if the username is probably present or -1 
 ## Why Bloom Filter is the Best Algorithm For This Project:
 
 1.**memory efficient:** using a fixed-size bit array 
+
 2.**fast:** costant time complexity
+
 3.**scalability:** can handle very large datasets
 
 ---
